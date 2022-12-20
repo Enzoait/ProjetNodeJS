@@ -7,4 +7,4 @@ const connection = new Sequelize(URL_BDD);
 
 connection.authenticate().then(() => console.log("La connexion à la BDD a été établie"));
 
-module.exports = connection
+module.exports = connection;
