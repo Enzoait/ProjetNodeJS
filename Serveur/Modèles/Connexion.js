@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 
-const URL_BDD =
-  process.env.URL_BDD || "mysql://Groupe12:password123@localhost:3306/bdd_taskmanager_groupe12";
+const URL_BDD = 
+  process.env.URL_BDD || //Mettre le lien de sa bdd ici;
 
 const connexion = new Sequelize(URL_BDD);
 
