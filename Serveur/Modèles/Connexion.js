@@ -1,10 +1,10 @@
 const Sequelize = require("sequelize");
 
-const URL_BDD =
-  process.env.URL_BDD || "mysql://Groupe12:password123@localhost:3306/bdd_taskmanager_groupe12";
+const DATABASE_URL =
+  process.env.DATABASE_URL || "mysql://Savindu:T18sOu5nJ9MGzYjP@88.161.127.190/bdd_taskmanager_groupe12";
 
-const connection = new Sequelize(URL_BDD);
+const connection = new Sequelize(DATABASE_URL);
 
-connection.authenticate().then(() => console.log("La connexion à la BDD a été établie"));
+connection.authenticate().then(() => console.log("Connected to DB"));
 
 module.exports = connection;
