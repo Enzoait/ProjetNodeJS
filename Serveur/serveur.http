@@ -1,53 +1,13 @@
-GET http://localhost:3306/users
-###
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOm51bGwsImxhc3RuYW1lIjpudWxsLCJpZCI6MSwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjcwNTc1NTM0fQ.fO-LQDvJsyAtaj0mY4HwHwKilJat__ydo3JY260kz9s
-###
-GET http://localhost:3000/users/1
-###
-POST http://localhost:3000/users
-###
-POST http://localhost:3000/users
-Content-Type: application/json
 
+
+###
+
+POST  http://localhost:3000/users
+Content-Type: application/json
 {
-    "name": "Test",
-    "email": "tt@t.com",
-    "password": "test"
+    "nom_de_famille": "Jean",
+    "email": "jean@gmail.com",
+    "mot_de_passe": "JeanJean"
 }
 ###
-POST http://localhost:3000/users
-Content-Type: application/json
-
-{
-    "name": "Test",
-    "email": "t@t.com",
-    "password": ""
-}
-###
-PUT http://localhost:3000/users/1
-###
-PUT http://localhost:3000/users/1
-Content-Type: application/json
-
-{
-    "email": ""
-}
-###
-PUT http://localhost:3000/users/1
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJjb3Vjb3UzIiwibGFzdG5hbWUiOiJjb3Vjb3UzIiwiaWQiOjQsImlhdCI6MTY3MDMyMTkxNH0.MGarOxVFmG44X1FAuU8bGxHp-XczFqRh8eLKmf8uB6o
-
-{
-    "password": ""
-}
-###
-DELETE http://localhost:3000/users/1
-###
-POST http://localhost:3000/login
-Content-Type: application/json
-
-{
-    "email": "tt@t.com",
-    "password": "test"
-}
