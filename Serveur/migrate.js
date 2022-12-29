@@ -1,6 +1,6 @@
-const { connection } = require("./Modèles");
+const { Connexion } = require("./Modèles");
 
-connection
+Connexion
   .sync({ alter: true })
-  .then(() => console.log("Database synced"))
-  .then(() => connection.close());
+  .then(() => console.log("Base de donnée synchronisée"))
+  .then(() => Connexion.close());
