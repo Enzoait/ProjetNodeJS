@@ -43,8 +43,7 @@ router.get("/users/:id", async (req, res) => {
 // Update un user
 router.put("/users/:id", CheckAutorisation, (req, res, next) => {
   if (req.utilisateur.id !== parseInt(req.params.id)) throw new Interdiction();
-
-  utilisateur.update(req.body, {
+  Utilisateur.update(req.body, {
     where: { id: parseInt(req.params.id) },
     individualHooks: true,
   })

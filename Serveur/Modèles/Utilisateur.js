@@ -27,7 +27,7 @@ Utilisateur.init(
       allowNull: false,
       defaultValue: "UTILISATEUR",
       validate: {
-        isIn: ["ADMINISTRATEUR", "UTILISATEUR"] // A corriger.
+        isIn: [["UTILISATEUR","ADMINISTRATEUR"]] 
       },
     },
   },

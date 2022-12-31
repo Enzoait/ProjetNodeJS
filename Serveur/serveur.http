@@ -1,16 +1,33 @@
-GET http://localhost:3000/users/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
+GET http://localhost:3000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjo0LCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAzNDQ0fQ.bMixlX4zMWzYU_YCQ2gF_YF6qORbvUngdv_h93majoQ
 
 ###
+
+GET http://localhost:3000/users/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjozLCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNDg4OTA3fQ.OvPQGQ06xKkPIITwf9HMsQ5zd_mNJ8dgQwzXCsYcMP8
+
+###Création admin 1
 
 POST  http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "nom_de_famille": "Enzo_Admin",
-    "email": "enzoadmin@gmail.com",
-    "mot_de_passe": "Enzo123",
+    "nom_de_famille": "DESARAM",
+    "prénom": "Savindu",
+    "email": "Savindu_admin@gmail.com",
+    "mot_de_passe": "Savindu123",
     "rôle": "ADMINISTRATEUR"
+}
+
+###
+
+PUT http://localhost:3000/users/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjo0LCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAzNDQ0fQ.bMixlX4zMWzYU_YCQ2gF_YF6qORbvUngdv_h93majoQ
+
+{
+    "prénom":"Jean"
+
 }
 
 ###
@@ -19,13 +36,13 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "enzoadmin@gmail.com",
-    "mot_de_passe": "Enzo123"
+    "email": "Savindu_adminn@gmail.com",
+    "mot_de_passe": "Savindu123"
 }
 
 ###
 
-DELETE  http://localhost:3000/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NjQyOH0.8HMOZnriMYvSbvkhYkGPltoQwowWehD4d5FUKHLTT1A
+DELETE  http://localhost:3000/users/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjozLCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAxODA4fQ.TcWEio7Rl1O9nuPzz65yz3zTcNbhzGR_6Gu4UwDoEdM
 
 ###
