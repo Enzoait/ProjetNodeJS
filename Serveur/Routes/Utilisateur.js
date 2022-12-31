@@ -9,8 +9,8 @@ const router = new Router();
 // Get collection
 router.get(
   "/users",
-  //CheckAutorisation,
-  //CheckRole({ minRole: CheckRole.ROLES.ADMIN}),
+  CheckAutorisation,
+  CheckRole({ minRole: CheckRole.ROLES.ADMIN}),
   (req, res) => {
     Utilisateur.findAll({
       where: req.query,
