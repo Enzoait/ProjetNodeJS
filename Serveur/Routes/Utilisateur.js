@@ -10,11 +10,11 @@ const router = new Router();
 router.get(
   "/users",
   CheckAutorisation,
-  CheckRole({ minRole: CheckRole.ROLES.ADMIN}),
+  CheckRole({ minRole: CheckRole.ROLES.ADMINISTRATEUR}), 
   (req, res) => {
     Utilisateur.findAll({
       where: req.query,
-      attributes: { exclude: ["password"] },
+      attributes: { exclude: ["mot_de_passe"] },
     }).then((data) => res.json(data));
   }
 );
@@ -31,7 +31,7 @@ router.post("/users", (req, res, next) => {
 // Récupérer un user
 router.get("/users/:id", async (req, res) => {
   const utilisateur = await Utilisateur.findByPk(parseInt(req.params.id), {
-    attributes: { exclude: "password" },
+    attributes: { exclude: "mot_de_passe" },
   });
   if (!utilisateur) {
     res.sendStatus(404);
@@ -51,7 +51,7 @@ router.put("/users/:id", CheckAutorisation, (req, res, next) => {
     .then(([nbUpdated]) => {
       if (!nbUpdated) return res.sendStatus(404);
       Utilisateur.findByPk(parseInt(req.params.id), {
-        attributes: { exclude: "password" },
+        attributes: { exclude: "mot_de_passe" },
       }).then((utilisateur) => res.json(utilisateur));
     })
     .catch(next);

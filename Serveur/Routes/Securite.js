@@ -22,7 +22,7 @@ securite.post("/login", async (req, res) => {
         nom_de_famille: utilisateur.nom_de_famille,
         prénom: utilisateur.prénom,
         id: utilisateur.id,
-        role: utilisateur.role,
+        rôle: utilisateur.rôle,
       },
       SECRET
     ),

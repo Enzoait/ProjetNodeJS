@@ -1,5 +1,5 @@
-GET http://localhost:3000/users
-
+GET http://localhost:3000/users/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
 
 ###
 
@@ -7,11 +7,25 @@ POST  http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "nom_de_famille": "Jean",
-    "email": "jean@gmail.com",
-    "mot_de_passe": "JeanJean"
+    "nom_de_famille": "Enzo_Admin",
+    "email": "enzoadmin@gmail.com",
+    "mot_de_passe": "Enzo123",
+    "rôle": "ADMINISTRATEUR"
+}
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "enzoadmin@gmail.com",
+    "mot_de_passe": "Enzo123"
 }
 
 ###
 
 DELETE  http://localhost:3000/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NjQyOH0.8HMOZnriMYvSbvkhYkGPltoQwowWehD4d5FUKHLTT1A
+
+###
