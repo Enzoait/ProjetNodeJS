@@ -86,7 +86,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZ
 
 ###
 
-###-----------------------------------------------Tests personnages--------------------------------------------------------------
+
+###-----------------------------------------------CRUDE personnages--------------------------------------------------------------
 
 GET http://localhost:3000/personnage
 
@@ -121,6 +122,26 @@ Content-Type: application/json
 
 {
     "puissance" : "6000"
+}
+###
+
+
+
+
+
+###-----------------------------------------------CRUDE Anime--------------------------------------------------------------
+
+GET http://localhost:3000/animes
+
+###
+
+POST http://localhost:3000/animes
+Content-Type: application/json
+
+{
+    "nom": "Jojo",
+    "autheur": "Araki",
+    "genre": "Seinen"
 }
 
 ###
