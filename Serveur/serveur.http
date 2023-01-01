@@ -1,4 +1,4 @@
-GET http://localhost:3000/users/4
+GET http://localhost:3000/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
 
 ###
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 ###
 
-DELETE  http://localhost:3000/users/1
+DELETE  http://localhost:3000/users/4
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NjQyOH0.8HMOZnriMYvSbvkhYkGPltoQwowWehD4d5FUKHLTT1A
 
 ###
