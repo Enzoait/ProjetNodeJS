@@ -9,6 +9,6 @@ module.exports = function (req, res, next) {
   if (type !== "Bearer") return res.sendStatus(401);
 
   const utilisateur = jwt.verify(token, SECRET);
-  req.user = utilisateur;
+  req.utilisateur = utilisateur;
   next();
 };

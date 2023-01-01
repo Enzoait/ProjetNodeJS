@@ -8,7 +8,7 @@ const ROLES = {
 
 function CheckRole({ minRole }) {
   return function checkRoleMiddleware(req, res, next) {
-    const Role_utilisateur = req.user.rôle;
+    const Role_utilisateur = req.utilisateur.rôle;
     console.log(Role_utilisateur, minRole);
     if (ROLES[Role_utilisateur] >= minRole) {
       next();
