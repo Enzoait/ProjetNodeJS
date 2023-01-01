@@ -1,3 +1,7 @@
+### ---------------------------------------------Requêtes User-------------------------------------------------------------------
+
+### ---------------------------------------------Tests Savindu-------------------------------------------------------------------
+
 GET http://localhost:3000/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjo0LCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAzNDQ0fQ.bMixlX4zMWzYU_YCQ2gF_YF6qORbvUngdv_h93majoQ
 
@@ -6,7 +10,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZ
 GET http://localhost:3000/users/4
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjozLCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNDg4OTA3fQ.OvPQGQ06xKkPIITwf9HMsQ5zd_mNJ8dgQwzXCsYcMP8
 
-###Création admin 1
+###
 
 POST  http://localhost:3000/users
 Content-Type: application/json
@@ -44,5 +48,79 @@ Content-Type: application/json
 
 DELETE  http://localhost:3000/users/3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjozLCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAxODA4fQ.TcWEio7Rl1O9nuPzz65yz3zTcNbhzGR_6Gu4UwDoEdM
+
+### 
+
+### -----------------------------------------------Tests Enzo---------------------------------------------------------------------
+
+GET http://localhost:3000/users/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
+
+###
+
+POST  http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "nom_de_famille": "Enzo_Admin",
+    "email": "enzoadmin@gmail.com",
+    "mot_de_passe": "Enzo123",
+    "rôle": "ADMINISTRATEUR"
+}
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "enzoadmin@gmail.com",
+    "mot_de_passe": "Enzo123"
+}
+
+###
+
+DELETE  http://localhost:3000/users/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NjQyOH0.8HMOZnriMYvSbvkhYkGPltoQwowWehD4d5FUKHLTT1A
+
+
+###
+
+###-----------------------------------------------Tests personnages--------------------------------------------------------------
+
+GET http://localhost:3000/personnage
+
+###
+
+POST http://localhost:3000/personnage
+Content-Type: application/json
+
+{
+    "nom_de_famille": "Uzumaki",
+    "prénom" : "Naruto",
+    "puissance" : "15000",
+    "points_de_vie": "12000"
+}
+
+###
+
+POST http://localhost:3000/personnage
+Content-Type: application/json
+
+{
+    "nom_de_famille": "Kamado",
+    "prénom" : "Tanjiro",
+    "puissance" : "5000",
+    "points_de_vie": "7000"
+}
+
+###
+
+PUT http://localhost:3000/personnage/2
+Content-Type: application/json
+
+{
+    "puissance" : "6000"
+}
 
 ###
