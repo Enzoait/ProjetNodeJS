@@ -14,7 +14,7 @@ Anime.init(
     genre: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "Inconnue",
+      defaultValue: "Shonen",
       validate: {
         isIn: [["Shonen","Shojo","Seinen","Josei"]] 
       },
