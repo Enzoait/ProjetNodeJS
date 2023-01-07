@@ -38,6 +38,7 @@ anime_router.get("/animes/:id", async (req, res) => {
 });
 
 anime_router.put("/animes/:id", (req, res, next) => {
+    if (req.Anime.id !== parseInt(req.params.id)) throw new Interdiction();
     Anime.update(req.body, {
       where: { id: parseInt(req.params.id) },
       individualHooks: true,
@@ -51,6 +52,7 @@ anime_router.put("/animes/:id", (req, res, next) => {
   
   // Delete un anime
   anime_router.delete("/animes/:id", (req, res) => {
+    if (req.Anime.id !== parseInt(req.params.id)) throw new Interdiction();
     Anime.destroy({
       where: {
         id: parseInt(req.params.id),

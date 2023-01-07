@@ -2,33 +2,35 @@
 
 ### ---------------------------------------------Tests Savindu-------------------------------------------------------------------
 
-###get colletion anime(200 OK)
 GET http://localhost:3000/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjo0LCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAzNDQ0fQ.bMixlX4zMWzYU_YCQ2gF_YF6qORbvUngdv_h93majoQ
 
-###get anime by id(error 404 Not Found)
-GET http://localhost:3000/users/8
+###
 
-###Création user 1(201 Created)
+GET http://localhost:3000/users/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjozLCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNDg4OTA3fQ.OvPQGQ06xKkPIITwf9HMsQ5zd_mNJ8dgQwzXCsYcMP8
+
+###
+
 POST  http://localhost:3000/users
 Content-Type: application/json
 
 {
     "nom_de_famille": "DESARAM",
     "prénom": "Savindu",
-    "email": "Savindu_usesr3@gmail.com",
+    "email": "Savindu_admin@gmail.com",
     "mot_de_passe": "Savindu123",
-    "rôle": "UTILISATEUR"
+    "rôle": "ADMINISTRATEUR"
 }
 
 ###
 
 PUT http://localhost:3000/users/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjY2NzkyOX0.240IlZ4rfw-WQUVnsq4AP34evHkpLsP2MkjN5BqjRic
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjo0LCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAzNDQ0fQ.bMixlX4zMWzYU_YCQ2gF_YF6qORbvUngdv_h93majoQ
 
 {
-    "prénom":"Jeremy"
+    "prénom":"Jean"
 
 }
 
@@ -38,16 +40,16 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "Savindu_usesr3@gmail.com",
+    "email": "Savindu_adminn@gmail.com",
     "mot_de_passe": "Savindu123"
 }
 
 ###
 
-DELETE  http://localhost:3000/users/12
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MjY2ODQ1N30.6IccY5rM98C0LOv-3sDrApkqwkLEOkZQ6K690PYd0Rw
+DELETE  http://localhost:3000/users/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjozLCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAxODA4fQ.TcWEio7Rl1O9nuPzz65yz3zTcNbhzGR_6Gu4UwDoEdM
 
-###
+### 
 
 ### -----------------------------------------------Tests Enzo---------------------------------------------------------------------
 
@@ -79,7 +81,7 @@ Content-Type: application/json
 ###
 
 DELETE  http://localhost:3000/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MjY2ODM3OH0.L8jYxjR5YERH4y8xlmknNssknvWHgKTT7IG9sPnmJIU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NjQyOH0.8HMOZnriMYvSbvkhYkGPltoQwowWehD4d5FUKHLTT1A
 
 
 ###
@@ -129,16 +131,10 @@ Content-Type: application/json
 
 ###-----------------------------------------------CRUDE Anime--------------------------------------------------------------
 
-###Get collection anime(200 OK)
 GET http://localhost:3000/animes
 
-###Get anime by id(200 OK)
-GET http://localhost:3000/animes/9
+###
 
-###Get anime by id(error 404 not found)
-GET http://localhost:3000/animes/78
-
-###Création anime 1(201 Created)
 POST http://localhost:3000/animes
 Content-Type: application/json
 
@@ -148,88 +144,4 @@ Content-Type: application/json
     "genre": "Seinen"
 }
 
-###Création anime 2(201 Created)
-POST http://localhost:3000/animes
-Content-Type: application/json
-
-{
-    "nom": "Demon slayer",
-    "autheur": "Gotoge",
-    "genre": "Shonen"
-}
-
-###Création anime 3(201 Created)
-POST http://localhost:3000/animes
-Content-Type: application/json
-
-{
-    "nom": "One piece",
-    "autheur": "Oda",
-    "genre": "Shonen"
-}
-
-###Création anime,genre must in list Isin(error 422)
-POST http://localhost:3000/animes
-Content-Type: application/json
-
-{
-    "nom": "One piece",
-    "autheur": "Oda",
-    "genre": "non valide"
-}
-
-###Création anime,bad request(error 400)
-POST http://localhost:3000/animes
-Content-Type: application/xml
-
-{
-    "nom": "One piece",
-    "autheur": "Oda",
-    "genre": "Seinen"
-}
-
-###Modif anime
-PUT http://localhost:3000/animes/7
-Content-Type: application/json
-
-{
-    "nom": "",
-    "autheur": "Araki",
-    "genre": "Seinen"
-}
-
-###Modif anime, error 422: genre must in isIN
-PUT http://localhost:3000/animes/12
-Content-Type: application/json
-
-{
-    "nom": "Jojo",
-    "autheur": "Araki",
-    "genre": "Pas bon"
-}
-
-###Modif anime(error 400)
-PUT http://localhost:3000/animes/7
-Content-Type: application/xml
-
-{
-    "nom": "Jojo",
-    "autheur": "Araki",
-    "genre": "Seinen"
-}
-
-###Modif anime(error 404 not Found)
-PUT http://localhost:3000/animes/100
-Content-Type: application/json
-
-{
-    "nom": "Jojo",
-    "autheur": "Araki",
-    "genre": "Seinen"
-}
-
-###Delete anime
-DELETE http://localhost:3000/animes/9
-
-###Delete, error 404: not found
-DELETE http://localhost:3000/animes/12
+###

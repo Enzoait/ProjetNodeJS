@@ -57,23 +57,19 @@ router.put("/users/:id", CheckAutorisation, (req, res, next) => {
 });
 
 // Delete un utilisateur
-router.delete(
-  "/users/:id", 
-  CheckAutorisation,
-  CheckRole({ minRole: CheckRole.ROLES.ADMINISTRATEUR}), 
-  (req, res) => {
-    Utilisateur.destroy({
-      where: {
-        id: parseInt(req.params.id),
-      },
-    }).then((nbDeleted) => {
-      if (nbDeleted) {
-        res.sendStatus(204);
-      } else {
-        res.sendStatus(404);
-      }
-    });
-  }
-);
+router.delete("/users/:id", CheckAutorisation, (req, res) => {
+  if (req.utilisateur.id !== parseInt(req.params.id)) throw new Interdiction();
+  Utilisateur.destroy({
+    where: {
+      id: parseInt(req.params.id),
+    },
+  }).then((nbDeleted) => {
+    if (nbDeleted) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  });
+});
 
 module.exports = router;
