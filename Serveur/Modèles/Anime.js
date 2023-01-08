@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const connexion = require("./Connexion");
+const Utilisateur = require("./Utilisateur");
 class Anime extends Model {}
 
 Anime.init(
@@ -14,7 +15,7 @@ Anime.init(
     genre: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: "Inconnue",
+      defaultValue: "Shonen",
       validate: {
         isIn: [["Shonen","Shojo","Seinen","Josei"]] 
       },
@@ -26,4 +27,7 @@ Anime.init(
     sequelize: connexion,
   }
 );
+Utilisateur.hasMany(Anime);
+Anime.belongsTo(Utilisateur);
+
 module.exports = Anime;

@@ -2,16 +2,14 @@
 
 ### ---------------------------------------------Tests Savindu-------------------------------------------------------------------
 
+###get colletion user(200 OK)
 GET http://localhost:3000/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjo0LCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAzNDQ0fQ.bMixlX4zMWzYU_YCQ2gF_YF6qORbvUngdv_h93majoQ
 
-###
+###get user by id(error 404 Not Found)
+GET http://localhost:3000/users/8
 
-GET http://localhost:3000/users/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjozLCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNDg4OTA3fQ.OvPQGQ06xKkPIITwf9HMsQ5zd_mNJ8dgQwzXCsYcMP8
-
-###
-
+###Création user 1(201 Created)
 POST  http://localhost:3000/users
 Content-Type: application/json
 
@@ -27,10 +25,10 @@ Content-Type: application/json
 
 PUT http://localhost:3000/users/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjo0LCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAzNDQ0fQ.bMixlX4zMWzYU_YCQ2gF_YF6qORbvUngdv_h93majoQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjY2NzkyOX0.240IlZ4rfw-WQUVnsq4AP34evHkpLsP2MkjN5BqjRic
 
 {
-    "prénom":"Jean"
+    "prénom":"Jeremy"
 
 }
 
@@ -40,16 +38,16 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "Savindu_adminn@gmail.com",
+    "email": "Savindu_usesr3@gmail.com",
     "mot_de_passe": "Savindu123"
 }
 
 ###
 
-DELETE  http://localhost:3000/users/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjozLCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjcyNTAxODA4fQ.TcWEio7Rl1O9nuPzz65yz3zTcNbhzGR_6Gu4UwDoEdM
+DELETE  http://localhost:3000/users/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiSmVhbiIsImlkIjo0LCJyw7RsZSI6IkFETUlOSVNUUkFURVVSIiwiaWF0IjoxNjczMDg3MTEwfQ.nSdrFg65DFChf70mbEWynkeNB8NaJSSoVitAYBNZiCA
 
-### 
+###
 
 ### -----------------------------------------------Tests Enzo---------------------------------------------------------------------
 
@@ -81,7 +79,7 @@ Content-Type: application/json
 ###
 
 DELETE  http://localhost:3000/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NjQyOH0.8HMOZnriMYvSbvkhYkGPltoQwowWehD4d5FUKHLTT1A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MjY2ODM3OH0.L8jYxjR5YERH4y8xlmknNssknvWHgKTT7IG9sPnmJIU
 
 
 ###
@@ -131,11 +129,103 @@ Content-Type: application/json
 
 ###-----------------------------------------------CRUDE Anime--------------------------------------------------------------
 
+###Get collection anime, only admin(200 OK)
 GET http://localhost:3000/animes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMywicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzA5Nzg5NX0.jr50ay2QDwLkCHoveljVugZNcjOztbJEN-mwyfKjAEU
 
-###
+###get anime item(200 OK)
+GET http://localhost:3000/animes/16
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzA5OTQ2MH0.7QpIupqwbv1TNXdNUSlxAb3mjqvjpxEZ8X3KBw0ECkg
 
+###Get anime by id(error 404 not found)
+GET http://localhost:3000/animes/78
+
+###Création anime 1(201 Created)
 POST http://localhost:3000/animes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzA4NzU4Nn0.jTkGEY3DTtO2CDydSmWM3q5U0A5GyT31h1w2xPmqHvE
+
+{
+    "nom": "2ème testmm",
+    "autheur": "2ème temmst",
+    "genre": "Seinen",
+    "UtilisateurId" : 12
+}
+
+###Création anime 2(201 Created)
+POST http://localhost:3000/animes
+Content-Type: application/json
+
+{
+    "nom": "Demon slayer",
+    "autheur": "Gotoge",
+    "genre": "Shonen"
+}
+
+###Création anime 3(201 Created)
+POST http://localhost:3000/animes
+Content-Type: application/json
+
+{
+    "nom": "One piece",
+    "autheur": "Oda",
+    "genre": "Shonen"
+}
+
+###Création anime,genre must in list Isin(error 422)
+POST http://localhost:3000/animes
+Content-Type: application/json
+
+{
+    "nom": "One piece",
+    "autheur": "Oda",
+    "genre": "non valide"
+}
+
+###Création anime,bad request(error 400)
+POST http://localhost:3000/animes
+Content-Type: application/xml
+
+{
+    "nom": "One piece",
+    "autheur": "Oda",
+    "genre": "Seinen"
+}
+
+###Modif anime
+PUT http://localhost:3000/animes/16
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzE2OTg1OH0.DY-aNK83ua5a09vcXJ1fmncMEn-tLLfjIN-C-TarpwY
+
+{
+    "nom": "salut",
+    "autheur": "test",
+    "genre": "Seinen",
+    "UtilisateurId": 12
+}
+
+###Modif anime, error 422: genre must in isIN
+PUT http://localhost:3000/animes/12
+Content-Type: application/json
+
+{
+    "nom": "Jojo",
+    "autheur": "Araki",
+    "genre": "Pas bon"
+}
+
+###Modif anime(error 400)
+PUT http://localhost:3000/animes/7
+Content-Type: application/xml
+
+{
+    "nom": "Jojo",
+    "autheur": "Araki",
+    "genre": "Seinen"
+}
+
+###Modif anime(error 404 not Found)
+PUT http://localhost:3000/animes/100
 Content-Type: application/json
 
 {
@@ -144,4 +234,8 @@ Content-Type: application/json
     "genre": "Seinen"
 }
 
-###
+###Delete anime
+DELETE http://localhost:3000/animes/9
+
+###Delete, error 404: not found
+DELETE http://localhost:3000/animes/12
