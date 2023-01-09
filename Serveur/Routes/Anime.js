@@ -39,19 +39,24 @@ anime_router.get("/animes/:id", CheckAutorisation, async(req, res) => {
     raw: true
   });
   
-  if (req.utilisateur.id !== utilisateur_id.UtilisateurId){
-    res.sendStatus(403);
-  } 
-  else{
-    const anime = await Anime.findByPk(parseInt(req.params.id));
-    if (!anime) {
-      res.sendStatus(404);
-    } else {
-      res.json(anime);
+  if(!utilisateur_id){
+    res.sendStatus(404);
+  } else {
+
+    if (req.utilisateur.id !== utilisateur_id.UtilisateurId){
+      res.sendStatus(403);
+    } 
+    else{
+      const anime = await Anime.findByPk(parseInt(req.params.id));
+      if (!anime) {
+        res.sendStatus(404);
+      } else {
+        res.json(anime);
+      }
     }
+
   }
-  
-  
+
 });
 
 anime_router.put("/animes/:id", CheckAutorisation, (req, res, next) => {
@@ -68,17 +73,9 @@ anime_router.put("/animes/:id", CheckAutorisation, (req, res, next) => {
 });
   
 // Delete un anime
-anime_router.delete("/animes/:id", CheckAutorisation, (req, res) => {
-  
-  const utilisateur_id = Anime.findOne({
-    attributes: ['UtilisateurId'],
-    where: {
-      id: parseInt(req.params.id)
-    },
-    raw: true
-  });
-  
-  if (req.utilisateur.id !== utilisateur_id.UtilisateurId)throw new Interdiction();
+anime_router.delete("/animes/:id", CheckAutorisation, 
+  CheckRole({ minRole: CheckRole.ROLES.ADMINISTRATEUR}), 
+  (req, res, next) => {
   Anime.destroy({
     where: {
       id: parseInt(req.params.id),
@@ -89,7 +86,7 @@ anime_router.delete("/animes/:id", CheckAutorisation, (req, res) => {
     } else {
       res.sendStatus(404); 
     }
-  });
+  }).catch(next);
 });
 
 module.exports = anime_router;
