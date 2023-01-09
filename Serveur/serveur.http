@@ -61,83 +61,115 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZ
 
 ###
 
-### -----------------------------------------------Tests Enzo---------------------------------------------------------------------
-
-GET http://localhost:3000/users/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
-
-###
-
-POST  http://localhost:3000/users
-Content-Type: application/json
-
-{
-    "nom_de_famille": "Enzo_Admin",
-    "email": "enzoadmin@gmail.com",
-    "mot_de_passe": "Enzo123",
-    "rôle": "ADMINISTRATEUR"
-}
-
-###
-
-POST http://localhost:3000/login
-Content-Type: application/json
-
-{
-    "email": "enzoadmin@gmail.com",
-    "mot_de_passe": "Enzo123"
-}
-
-###
-
-DELETE  http://localhost:3000/users/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MjY2ODM3OH0.L8jYxjR5YERH4y8xlmknNssknvWHgKTT7IG9sPnmJIU
-
-
-###
-
 
 ###-----------------------------------------------CRUDE personnages--------------------------------------------------------------
 
+### Code 200 Ok , Test : Un admin récupère tout les personnages créés. 
+
 GET http://localhost:3000/personnage
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
 
-###
+### Code 403 Interdit , Test : Un utilisateur non-admin tente de récupèrer tout les personnages créés. 
+
+GET http://localhost:3000/personnage
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fVXRpbGkiLCJwcsOpbm9tIjpudWxsLCJpZCI6MiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzI2MDQ2Nn0.uAh8SwL4vNk9VWp_ECJp-MAurAVxaVVrlHTjHpHAx8A
+
+### Code 403 Interdit , Test : Un utilisateur tente de récupèrer un personnage qu'il n'a pas créé. 
+
+GET http://localhost:3000/personnage/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fVXRpbGkiLCJwcsOpbm9tIjpudWxsLCJpZCI6MiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzI2MDQ2Nn0.uAh8SwL4vNk9VWp_ECJp-MAurAVxaVVrlHTjHpHAx8A
+
+### Code 200 Ok , Test : Un utilisateur récupère un personnage qu'il a créé. 
+
+GET http://localhost:3000/personnage/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
+
+### Code 401 Non-autorisé , Test : Un visiteur non authentifié (non-utilisateur) tente de créer un personnage. 
 
 POST http://localhost:3000/personnage
 Content-Type: application/json
 
 {
-    "nom_de_famille": "Uzumaki",
-    "prénom" : "Naruto",
-    "puissance" : "15000",
-    "points_de_vie": "12000"
+    "nom_de_famille": "Vinsmoke",
+    "prénom" : "Sanji",
+    "puissance" : "9000",
+    "points_de_vie": "8000"
 }
 
-###
+### Code 201 : Ok , Test : Un admin créée un personnage avec son Id. 
 
 POST http://localhost:3000/personnage
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
 Content-Type: application/json
 
 {
-    "nom_de_famille": "Kamado",
-    "prénom" : "Tanjiro",
-    "puissance" : "5000",
-    "points_de_vie": "7000"
+    "nom_de_famille": "Monkey D.",
+    "prénom" : "Luffy",
+    "puissance" : "14000",
+    "points_de_vie": "11000",
+    "UtilisateurId": 4
 }
 
-###
+### Code 201 : Ok , Test : Un admin créée un personnage avec son Id. 
 
-PUT http://localhost:3000/personnage/2
+POST http://localhost:3000/personnage
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
 Content-Type: application/json
 
 {
-    "puissance" : "6000"
+    "nom_de_famille": "Monkey D.",
+    "prénom" : "Luffy",
+    "puissance" : "14000",
+    "points_de_vie": "11000",
+    "UtilisateurId": 4
 }
-###
 
+### Code 201 : Ok , Test : Un admin créée un personnage avec son Id. 
 
+POST http://localhost:3000/personnage
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
+Content-Type: application/json
 
+{
+    "nom_de_famille": "Uchiha",
+    "prénom" : "Sasuke",
+    "puissance" : "12000",
+    "points_de_vie": "10000",
+    "UtilisateurId": 4,
+    "AnimeId": 1
+}
 
+### Code 200 Ok , Test : un admin modifie un personnage qu'il a créé. 
+
+PUT http://localhost:3000/personnage/4 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
+Content-Type: application/json
+
+{
+    "puissance" : "12000",
+    "UtilisateurId": 4
+}
+
+### Code 403 : Interdit , Test : un utilisateur essaie de modifier un personnage qu'il n'a pas créé. 
+
+PUT http://localhost:3000/personnage/3 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fVXRpbGkiLCJwcsOpbm9tIjpudWxsLCJpZCI6MiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzI2MDQ2Nn0.uAh8SwL4vNk9VWp_ECJp-MAurAVxaVVrlHTjHpHAx8A
+Content-Type: application/json
+
+{
+    "puissance" : "16000",
+    "UtilisateurId": 4
+}
+
+### Code 403 : Interdit, Test : Un utilisateur essaie de supprimer un personnage qu'il n'a pas créé. 
+
+DELETE http://localhost:3000/personnage/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fVXRpbGkiLCJwcsOpbm9tIjpudWxsLCJpZCI6MiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzI2MDQ2Nn0.uAh8SwL4vNk9VWp_ECJp-MAurAVxaVVrlHTjHpHAx8A
+
+### Code 204 : No content, Test : Un administrateur supprime un personnage qu'il a créé. 
+
+DELETE http://localhost:3000/personnage/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
 
 ###-----------------------------------------------CRUDE Anime--------------------------------------------------------------
 

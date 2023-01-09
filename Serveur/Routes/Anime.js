@@ -30,7 +30,7 @@ anime_router.post("/animes", CheckAutorisation, (req, res, next) => {
 
 // Récupérer un anime item
 anime_router.get("/animes/:id", CheckAutorisation, async(req, res) => {
-  
+
   const utilisateur_id = await Anime.findOne({
     attributes: ['UtilisateurId'],
     where: {
@@ -38,7 +38,7 @@ anime_router.get("/animes/:id", CheckAutorisation, async(req, res) => {
     },
     raw: true
   });
-  
+
   if(!utilisateur_id){
     res.sendStatus(404);
   } else {
@@ -88,5 +88,6 @@ anime_router.delete("/animes/:id", CheckAutorisation,
     }
   }).catch(next);
 });
+
 
 module.exports = anime_router;
