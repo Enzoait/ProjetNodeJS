@@ -16,7 +16,7 @@ Content-Type: application/json
 {
     "nom_de_famille": "DESARAM",
     "prénom": "Savindu",
-    "email": "Savindu_admin@gmail.com",
+    "email": "Savindu_admin2@gmail.com",
     "mot_de_passe": "Savindu123",
     "rôle": "ADMINISTRATEUR"
 }
@@ -38,7 +38,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "Savindu_usesr3@gmail.com",
+    "email": "Savindu_admin2@gmail.com",
     "mot_de_passe": "Savindu123"
 }
 
@@ -134,8 +134,8 @@ GET http://localhost:3000/animes
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMywicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzA5Nzg5NX0.jr50ay2QDwLkCHoveljVugZNcjOztbJEN-mwyfKjAEU
 
 ###get anime item(200 OK)
-GET http://localhost:3000/animes/16
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzA5OTQ2MH0.7QpIupqwbv1TNXdNUSlxAb3mjqvjpxEZ8X3KBw0ECkg
+GET http://localhost:3000/animes/14
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzIwNDQ0OX0.MeRH3cJCWN5pDGC35Ht60xPMXHFaNOCw7A2mbpdh2m4
 
 ###Get anime by id(error 404 not found)
 GET http://localhost:3000/animes/78
@@ -143,13 +143,13 @@ GET http://localhost:3000/animes/78
 ###Création anime 1(201 Created)
 POST http://localhost:3000/animes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMiwicsO0bGUiOiJVVElMSVNBVEVVUiIsImlhdCI6MTY3MzA4NzU4Nn0.jTkGEY3DTtO2CDydSmWM3q5U0A5GyT31h1w2xPmqHvE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzIwMTgwMn0.j5AvOE0bp5Tp6UXmY5G5Btbkla-7pAQRKoIHMYjxppo
 
 {
-    "nom": "2ème testmm",
+    "nom": "Yooooo",
     "autheur": "2ème temmst",
     "genre": "Seinen",
-    "UtilisateurId" : 12
+    "UtilisateurId" : 18
 }
 
 ###Création anime 2(201 Created)
@@ -201,7 +201,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZ
     "nom": "salut",
     "autheur": "test",
     "genre": "Seinen",
-    "UtilisateurId": 12
+    "UtilisateurId": 13
 }
 
 ###Modif anime, error 422: genre must in isIN
