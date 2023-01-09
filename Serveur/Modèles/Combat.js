@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const connexion = require("./Connexion");
+const Utilisateur = require("./Utilisateur");
 class Combat extends Model {}
 
 Combat.init(

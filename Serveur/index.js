@@ -3,6 +3,7 @@ const Routeur_Utilisateur = require("./Routes/Utilisateur");
 const Routeur_Securite = require("./Routes/Securite");
 const Routeur_Personnage = require("./Routes/Personnage");
 const Routeur_Anime = require("./Routes/Anime");
+const Routeur_Securite = require("./Routes/Combat");
 const CheckFormatDeRequete = require("./Middlewares/CheckFormatDeRequete");
 const Gestionnaire_d_erreurs = require("./Middlewares/Gestionnaire_d_erreurs");
 const app = express();
@@ -34,6 +35,7 @@ app.use(Routeur_Securite);
 app.use(Routeur_Utilisateur);
 app.use(Routeur_Personnage);
 app.use(Routeur_Anime);
+app.use(Routeur_Combat);
 app.use(Gestionnaire_d_erreurs);
 
 const PORT = process.env.PORT || 3000;
