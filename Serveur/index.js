@@ -35,6 +35,7 @@ app.use(Routeur_Securite);
 app.use(Routeur_Utilisateur);
 app.use(Routeur_Personnage);
 app.use(Routeur_Anime);
+app.use(Routeur_Combat);
 app.use(Gestionnaire_d_erreurs);
 
 const PORT = process.env.PORT || 3000;
