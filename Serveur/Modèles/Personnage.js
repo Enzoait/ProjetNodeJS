@@ -29,5 +29,14 @@ Personnage.belongsTo(Anime, {
   targetKey: "id",
 });
 
+Combat.hasMany(Personnage, {
+  foreignKey: "CombatId",
+  sourceKey: "id",
+});
+Personnage.belongsTo(Combat, {
+  foreignKey: "CombatId",
+  targetKey: "id",
+});
+
 module.exports = Personnage;
 
