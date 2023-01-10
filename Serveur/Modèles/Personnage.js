@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const connexion = require("./Connexion");
 const Utilisateur = require("./Utilisateur");
+const Combat = require("./Combat");
 const Anime = require("./Anime");
 class Personnage extends Model {}
 
@@ -26,15 +27,6 @@ Anime.hasMany(Personnage, {
 });
 Personnage.belongsTo(Anime, {
   foreignKey: "AnimeId",
-  targetKey: "id",
-});
-
-Combat.hasMany(Personnage, {
-  foreignKey: "CombatId",
-  sourceKey: "id",
-});
-Personnage.belongsTo(Combat, {
-  foreignKey: "CombatId",
   targetKey: "id",
 });
 
