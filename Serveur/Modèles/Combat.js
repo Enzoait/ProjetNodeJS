@@ -1,27 +1,26 @@
 const { Model, DataTypes } = require("sequelize");
 const connexion = require("./Connexion");
-const Utilisateur = require("./Utilisateur");
 const Personnage = require("./Personnage");
+const Utilisateur = require("./Utilisateur");
 class Combat extends Model {}
 
 Combat.init(
     {
-        id_combat : DataTypes.INTEGER
+        vainceur: DataTypes.STRING,
     },
-{
-sequelize: connexion,
-}
+    {
+    sequelize: connexion,
+    }
+
 );
 
 Utilisateur.hasMany(Combat);
 Combat.belongsTo(Utilisateur);
 
-
-/*
 Personnage.hasMany(Combat, {
     foreignKey: "PersonnageId_1",
     sourceKey: "id",
-});                                                     //Erreur : Personnage.hasMany is not a function
+});                                                     
 Combat.belongsTo(Personnage, {
     foreignKey: "PersonnageId_1",
     targetKey: "id",
@@ -36,5 +35,5 @@ Combat.belongsTo(Personnage, {
     targetKey: "id",
 });
 
-*/
+
 module.exports = Combat;

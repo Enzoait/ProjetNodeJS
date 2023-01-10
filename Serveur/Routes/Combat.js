@@ -2,7 +2,7 @@ const { Router } = require("express");
 const Interdiction = require("../Erreurs/Interdiction");
 const CheckAutorisation = require("../Middlewares/CheckAutorisation");
 const CheckRole = require("../Middlewares/CheckRole");
-const { Combat } = require("../Modèles");
+const { Combat, Personnage } = require("../Modèles");
 
 const router = new Router();
 
@@ -18,17 +18,6 @@ router.get(
   }
 );
 
-// Créer un combat
-router.post("/combat", CheckAutorisation,(req, res, next) => {
-  if (req.utilisateur.id !== req.body.UtilisateurId) throw new Interdiction();
-  const Combat = new Combat(req.body);
-  combat
-    .save()
-    .then((data) => res.status(201).json(data))
-    .catch(next);
-});
-
-// Récupérer un combat
 router.get("/combat/:id", CheckAutorisation, async(req, res) => {
 
   const utilisateur_id = await Combat.findOne({
@@ -59,23 +48,94 @@ router.get("/combat/:id", CheckAutorisation, async(req, res) => {
 
 });
 
-// Update un combat
-router.put("/combat/:id", CheckAutorisation, (req, res, next) => {
-  if (req.utilisateur.id !== req.body.UtilisateurId) throw new Interdiction();
-  Combat.update(req.body, {
-  where: { id: parseInt(req.params.id) },
-  individualHooks: true,
-})
-  .then(([nbUpdated]) => {
-    if (!nbUpdated) return res.sendStatus(404);
-    Combat.findByPk(parseInt(req.params.id)).then((Combat) => res.json(Combat));
-  })
-  .catch(next);
+// Créer un combat
+router.post("/combat",async(req, res, next) => {
+  
+  let perso1_points_de_vie = await Personnage.findOne({
+    attributes: ['points_de_vie'],
+    where: {
+      id: req.body.PersonnageId_1
+    },
+    raw: true
+  });
+  
+  if(!perso1_points_de_vie){
+    res.sendStatus(404);
+  } 
+
+  let perso2_points_de_vie = await Personnage.findOne({
+    attributes: ['points_de_vie'],
+    where: {
+      id: req.body.PersonnageId_2
+    },
+    raw: true
+  });
+
+  if(!perso2_points_de_vie){
+    res.sendStatus(404);
+  } 
+
+  let perso1_puissance = await Personnage.findOne({
+    attributes: ['puissance'],
+    where: {
+      id: req.body.PersonnageId_1
+    },
+    raw: true
+  });
+
+  if(!perso1_puissance){
+    res.sendStatus(404);
+  } 
+
+
+  let perso2_puissance = await Personnage.findOne({
+    attributes: ['puissance'],
+    where: {
+      id: req.body.PersonnageId_2
+    },
+    raw: true
+  });
+
+  if(!perso2_puissance){
+    res.sendStatus(404);
+  } 
+
+  let Etat_perso1 = perso1_points_de_vie.points_de_vie;
+  let Etat_perso2 = perso2_points_de_vie.points_de_vie;
+
+  while((Etat_perso1 > 0) || (Etat_perso2 > 0)){
+    Etat_perso1 = Etat_perso1-perso2_puissance.puissance;
+    Etat_perso2 = Etat_perso2-perso1_puissance.puissance;
+  }
+
+  let result;
+  if(Etat_perso1 < Etat_perso2){
+    result = req.body.PersonnageId_2
+  }
+
+  if(Etat_perso2 < Etat_perso1){
+    result = req.body.PersonnageId_1
+  }
+  
+  const combat = await Combat.create({
+    PersonnageId_1: req.body.PersonnageId_1,
+    PersonnageId_2: req.body.PersonnageId_2,
+    UtilisateurId: req.body.UtilisateurId,
+    vainceur: result
+  });
+     
+  combat
+    .save()
+    .then((data) => res.status(201).json(data))
+    .catch(next)
+  
 });
 
 // Delete un combat
-router.delete("/combat/:id", CheckAutorisation, CheckRole({ minRole: CheckRole.ROLES.ADMINISTRATEUR}), (req, res) => {
-  
+router.delete("/combat/:id", 
+  CheckAutorisation, 
+  CheckRole({ minRole: CheckRole.ROLES.ADMINISTRATEUR}), 
+  (req, res) => {
     Combat.destroy({
       where: {
         id: parseInt(req.params.id),

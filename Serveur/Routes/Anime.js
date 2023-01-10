@@ -2,7 +2,7 @@ const { Router } = require("express");
 const Interdiction = require("../Erreurs/Interdiction");
 const CheckAutorisation = require("../Middlewares/CheckAutorisation");
 const CheckRole = require("../Middlewares/CheckRole");
-const { Anime } = require("../Modèles");
+const { Anime, Personnage} = require("../Modèles");
 
 const anime_router = new Router();
 
@@ -52,6 +52,41 @@ anime_router.get("/animes/:id", CheckAutorisation, async(req, res) => {
         res.sendStatus(404);
       } else {
         res.json(anime);
+      }
+    }
+
+  }
+
+});
+
+// Affichez nombre de personnages dans un anime
+anime_router.get("/animes_perso/:id", CheckAutorisation, async(req, res) => {
+
+  const utilisateur_id = await Anime.findOne({
+    attributes: ['UtilisateurId'],
+    where: {
+      id: parseInt(req.params.id)
+    },
+    raw: true
+  });
+
+  if(!utilisateur_id){
+    res.sendStatus(404);
+  } else {
+
+    if (req.utilisateur.id !== utilisateur_id.UtilisateurId){
+      res.sendStatus(403);
+    } 
+    else{
+      const count_personnage = await Personnage.count({
+        where: {
+          Animeid: parseInt(req.params.id)
+        },
+      });
+      if (!count_personnage) {
+        res.sendStatus(404);
+      } else {
+        res.json(count_personnage);
       }
     }
 

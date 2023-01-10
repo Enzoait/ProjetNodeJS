@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const connexion = require("./Connexion");
 const Utilisateur = require("./Utilisateur");
-const Combat = require("./Combat");
 const Anime = require("./Anime");
 class Personnage extends Model {}
 

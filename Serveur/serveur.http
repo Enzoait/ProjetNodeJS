@@ -50,7 +50,7 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email": "Savindu_user@gmail.com",
+    "email": "Savindu_admin@gmail.com",
     "mot_de_passe": "Savindu123"
 }
 
@@ -113,7 +113,7 @@ Content-Type: application/json
 ### Code 201 : Ok , Test : Un admin créée un personnage avec son Id. 
 
 POST http://localhost:3000/personnage
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNiwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzM1OTI1Nn0.vmGDcceFdXyRmqYIvXqHy-T0Fzea2vn2cYDjHTsWsF4
 Content-Type: application/json
 
 {
@@ -121,22 +121,23 @@ Content-Type: application/json
     "prénom" : "Luffy",
     "puissance" : "14000",
     "points_de_vie": "11000",
-    "UtilisateurId": 4
+    "UtilisateurId": 16,
+    "AnimeId": 4
 }
 
 ### Code 201 : Ok , Test : Un admin créée un personnage avec son Id. 
 
 POST http://localhost:3000/personnage
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkVuem9fQWRtaW4iLCJwcsOpbm9tIjpudWxsLCJpZCI6NCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MjQ5NzQ1OX0.9uGbEBnWquD-cVI1l02u0AipNCbmOTfdoSL-bjbRS0E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNiwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzM1OTU5NX0.jcXxY7mpcSphuhJQ8UYuixttAIyidjS2sz7czAK1JeI
 Content-Type: application/json
 
 {
     "nom_de_famille": "Uchiha",
-    "prénom" : "Sasuke",
-    "puissance" : "12000",
-    "points_de_vie": "10000",
-    "UtilisateurId": 4,
-    "AnimeId": 1
+    "prénom" : "Itachi",
+    "puissance" : "14000",
+    "points_de_vie": "12000",
+    "UtilisateurId": 16,
+    "AnimeId": 26
 }
 
 ### Code 200 Ok , Test : un admin modifie un personnage qu'il a créé. 
@@ -178,8 +179,12 @@ GET http://localhost:3000/animes
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMywicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzA5Nzg5NX0.jr50ay2QDwLkCHoveljVugZNcjOztbJEN-mwyfKjAEU
 
 ###get anime item(200 OK)
-GET http://localhost:3000/animes/14
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNCwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzIwNDQ0OX0.MeRH3cJCWN5pDGC35Ht60xPMXHFaNOCw7A2mbpdh2m4
+GET http://localhost:3000/animes/26
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNiwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzM1OTU5NX0.jcXxY7mpcSphuhJQ8UYuixttAIyidjS2sz7czAK1JeI
+
+###get number of character in anime by id(200 OK)
+GET http://localhost:3000/animes_perso/26
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNiwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzM1OTU5NX0.jcXxY7mpcSphuhJQ8UYuixttAIyidjS2sz7czAK1JeI
 
 ###Get anime by id(error 404 not found)
 GET http://localhost:3000/animes/78
@@ -293,3 +298,27 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZ
 
 ###Delete, error 404: not found
 DELETE http://localhost:3000/animes/18
+
+###-----------------------------------------------CRUDE Anime--------------------------------------------------------------
+
+###Get collection anime, only admin(200 OK)
+GET http://localhost:3000/combat
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxMywicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzA5Nzg5NX0.jr50ay2QDwLkCHoveljVugZNcjOztbJEN-mwyfKjAEU
+
+###Get anime item, only admin(200 OK)
+GET http://localhost:3000/combat/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNiwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzM4NDcxNn0.ufC49RwX9s14KAO4PB7tceHiYRAduAUEgjPWvRE9sAI
+
+###
+POST http://localhost:3000/combat
+Content-Type: application/json
+
+{
+    "PersonnageId_1": 1,
+    "PersonnageId_2": 2,
+    "UtilisateurId": 16
+}
+
+###delete a fight
+DELETE http://localhost:3000/combat/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21fZGVfZmFtaWxsZSI6IkRFU0FSQU0iLCJwcsOpbm9tIjoiU2F2aW5kdSIsImlkIjoxNiwicsO0bGUiOiJBRE1JTklTVFJBVEVVUiIsImlhdCI6MTY3MzI2MTQ4OX0.3KlxaWvhDk5JKqqofb_UNotd6nsSKluwDarljtst9Wg
